@@ -1,0 +1,4 @@
+1. Increase the dataset available - Atleast till 2000
+2. Find if there is some way to process the data better than current way to capture more information efficiently
+3. Increased Computation power - Run it for longer epochs
+4. Experiment with some different models
