@@ -1,0 +1,58 @@
+1. Ensure CUDA is setup in local. - CUDA Toolkit, CudNN, Visual Studio Community
+2. To setup NVIDIA Container Toolkit - https://www.youtube.com/watch?v=CO43b6XWHNI
+
+3. Text Generation Inference Setup : https://github.com/huggingface/text-generation-inference
+
+Commands to execute:
+    
+    model=#Your model
+
+    volume=$PWD/data
+
+    sudo docker run --gpus all --shm-size 1g -p 3000:80 -v $volume:/data ghcr.io/huggingface/text-generation-inference:1.0.0 --model-id $model --quantize bitsandbytes
+
+4. Chat-UI Prerequisite MongoDB: https://github.com/huggingface/chat-ui
+
+    1. You need MongoDB - sudo docker run -d -p 27017:27017 --name mongo-chatui mongo:latest
+
+5. Chat-UI Setup: https://github.com/huggingface/chat-ui
+
+    1. git clone https://github.com/huggingface/chat-ui.git
+
+    2. Create a file called .env.local
+
+.env.local:
+
+MONGODB_URL = mongodb://127.0.0.1:27017
+MODELS=`[
+  {
+    "name": "Local LLM",
+    "endpoints": [{"url": "http://127.0.0.1:5000"}],
+    "userMessageToken": "",
+    "assistantMessageToken": "",
+    "messageEndToken": "</s>",
+    "preprompt": "Below are a series of dialogues between various people and an AI assistant. The AI tries to be helpful, polite, honest, sophisticated, emotionally aware, and humble-but-knowledgeable. The assistant is happy to help with almost anything, and will do its best to understand exactly what is needed. It also tries to avoid giving false or misleading information, and it caveats when it isn't entirely sure about the right answer. That said, the assistant is practical and really does its best, and doesn't let caution get too much in the way of being useful.\n-----\n",
+    "parameters": {
+      "temperature": 0.9,
+      "top_p": 0.95,
+      "repetition_penalty": 1.2,
+      "top_k": 50,
+      "truncate": 1000,
+      "max_new_tokens": 1024
+    }
+  }
+]`
+
+    3. Paste the above content inside .env.local file
+
+    4. Install npm via nvm:
+
+        curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.4/install.sh | bash
+
+        export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
+
+        nvm install node # "node" is an alias for the latest version
+
+    5. npm install && npm run dev
+

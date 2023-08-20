@@ -1,0 +1,58 @@
+EVALUATION OF LLMs
+
+Model Evaluation:
+	Model evaluation is the process of analyzing the performance of the model with the help of some metrics
+	
+What is a good evaluation:
+	Correlated with outcomes - Appropriate metrics used for appropriate models
+	Very less number of metrics, in an ideal world single metric - Easy to track and monitor and make a judgement accordingly
+	Must be as fast and automatic as possible to compute - We cant completely automate the evaluation. It is important to have a human intervention but yet the evaluation should be as automated and fast as possible
+	
+Why the conventional methods of evaluation doesn't work for LLMs?
+	
+	The data used while training and production are always not the same. It can be as different as possible
+	
+	Another key bottleneck is that in LLMs we wont have definitive results. It has a complex generation behavior which is hard to understand. Though the sentence generated would be different from the ground truth the generated sentence will provide the same contextual meaning.
+	
+	For eg:
+		
+		In Traditional ML, lets consider a scenario of sentiment analysis
+		
+		pred = [P, N, P, P]
+		label = [P, N, P, N]
+		
+		For the above set to be evaluated we can use metrices like accuracy which here will be 0.75 but that cannot be the case for LLMS
+		
+		For LLMs, lets consider a case of summarization of a context given
+		
+		pred = Usually LLMs works very well with wide variety	of NLP tasks because they are great generalists by nature
+		label = LLMs are great generalists, so they usually work pretty good with variety of NLP tasks
+		
+		Both convey the same meaning if we see it in a contextual way then the model can be given 100% but usually traditional methods are not qualitative but quantitative. So it is hard to have a metric to quantify the evaluation here
+		
+Points to consider in Creation of Evaluation Pipeline for LLMs
+	
+	The two important components for an evaluation pipeline of an LLM would be the evaluation data and evaluation metric. Here the metric should be correlated as much as possible with the outcome and evaluation data must be as similar as possible to the production or real-time data to call it a good evaluation. 
+	
+	On this aspect public benchmarks would be the worst for you to use and select models based on public benchmarks because they don't directly correlate with the use-case of choice. Some of the public benchmarks are Human Eval, Chatbot Arena, BLEU, HELM, Stanford Alpaca Eval, Rouge, etc...
+	
+	The best evaluation would be human-eval in which man workforce is used to evaluate the responses against a data like production data. It is the best because the human beings can understand it contextually and measure the performance in a qualitative nature. But the disadvantage is that it is very costly and slow in nature
+	
+	So considering these lets see how to build the evaluation pipeline in the best way possible
+		- Create your own evaluation data 
+		- Choose an evaluation metric
+		- Way of evaluation
+			
+Evaluation metrics for LLMs
+	
+	Need to choose an appropriate evaluation metric
+	
+	Regular metrics - Eg: Accuracy
+	Reference matching metrics - Eg: Sentence Similarity
+	Comparison of results metrics - Eg: Asking an LLM on which of your responses is better
+	Feedback Incorporation Check metrics - Eg: Ask an LLM to check if the response is aligned according to your feedback provided
+	Static metrics - Eg: For structured responses like JSON formatted output, verifying the structure
+	
+Way of evaluation:
+
+Based on Points to consider in Creation of Evaluation Pipeline for LLMs, we know that data needs to be as correlated as possible which we would have achieved in the Create your own evaluation data section and we also saw how to choose the evaluation metric. But we also saw that human evaluation is the best method to evaluate but it is very costly. So an ideal solution for now would be to have an auto-eval of some sorts like using LLMs or some logical pipeline and monitoring and verifying it with a human so that the auto-eval pipeline can be made better by the feedback of the human
