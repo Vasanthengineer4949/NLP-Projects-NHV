@@ -1,0 +1,4 @@
+farm-haystack
+pytube
+git+https://github.com/openai/whisper.git 
+llama-cpp-python
