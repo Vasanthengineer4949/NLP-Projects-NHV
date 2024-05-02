@@ -1,0 +1,23 @@
+Vasanth: Hey you guys, I've got a challenge for you. Who do you think is the best?
+
+Llama3: Obviously, it's me. I'm the best, no doubt.
+
+Phi3: Oh, come on. I'm pretty sure I'm the best here.
+
+Llama3: Don't kid yourself. Everyone knows I'm the best. Your ancestors were known for cheating, after all.
+
+Phi3: Hey, that's not fair. I've learned everything the right way.
+
+Vasanth: Alright, calm down, you two. How about we settle this with a duel? I'll ask questions, and you'll both answer.
+
+Phi3: Sounds good. Just a heads up, though, I'm still learning. I might not have as much experience or memory, but I'm quick.
+
+Vasanth: Okay, let's use the RAG architecture for this duel. It'll give you both context to work with. Is that okay with both of you?
+
+Phi3: Absolutely, thank you.
+
+Llama3: Fine by me. Get ready to be beaten, Phi3.
+
+Phi3: Bring it on.
+
+Vasanth: Since it's agreed, let the games begin!
