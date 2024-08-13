@@ -1,0 +1,1 @@
+ollama create -f Modelfile tutorial-math-llama3 
