@@ -6,6 +6,7 @@ from typing import List
 
 from phi.assistant import Assistant
 from phi.tools import Toolkit
+# Exa is the fastest and most accurate web search API for AI
 from phi.tools.exa import ExaTools
 from phi.tools.shell import ShellTools
 from phi.tools.calculator import Calculator
